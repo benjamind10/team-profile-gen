@@ -1,0 +1,28 @@
+{
+  "name": "team-profile-gen",
+  "version": "1.0.0",
+  "description": "HTML file generator for team members",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjamind10/team-profile-gen.git"
+  },
+  "author": "benjamind10",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benjamind10/team-profile-gen/issues"
+  },
+  "homepage": "https://github.com/benjamind10/team-profile-gen#readme",
+  "devDependencies": {
+    "jest": "^27.4.7"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
