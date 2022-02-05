@@ -6,7 +6,7 @@ const {
 
 // Function to initialize app
 function init() {
-  newManager();
+  newManager().then(newEmployee);
 }
 // Function call to initialize app
 init();

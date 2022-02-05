@@ -9,7 +9,7 @@ function validate(arg) {
 
 function validateNum(arg) {
   if (isNaN(arg)) {
-    console.log('Please enter an office number.');
+    console.log('Please enter a number.');
     return false;
   } else return true;
 }

@@ -41,8 +41,8 @@ const newManager = () => {
       message: "Enter the manager's office number",
       validate: validateNum,
     },
-  ]).then(manager_data => {
-    const { name, id, email, officeNumber } = manager_data;
+  ]).then(managerData => {
+    const { name, id, email, officeNumber } = managerData;
     const manager = new Manager(name, id, email, officeNumber);
 
     team.push(manager);
@@ -65,6 +65,65 @@ const newEmployee = () => {
     Adding new employee:
   ***********************
   `);
+
+  return inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'role',
+        message: "Choose your employee's role",
+        choices: ['Engineer', 'Intern'],
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Name of the employee?',
+        validate: validate,
+      },
+      {
+        type: 'input',
+        name: 'id',
+        message: 'Employee ID.',
+        validate: validateNum,
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: 'Employee email.',
+        validate: validateEmail,
+      },
+      {
+        type: 'input',
+        name: 'github',
+        message: "Employee's github username.",
+        when: input => input.role === 'Engineer',
+        validate: validate,
+      },
+      {
+        type: 'input',
+        name: 'school',
+        message: "Intern's school",
+        when: input => input.role === 'Intern',
+        validate: validate,
+      },
+      {
+        type: 'confirm',
+        name: 'addEmployee',
+        message: 'Add additional employee?',
+        default: false,
+      },
+    ])
+    .then(response => {
+      const { name } = response;
+
+      console.log(`
+    ****************************
+      Employee: ${name} added.
+    ****************************
+    `);
+
+      console.log(response);
+    });
 };
 
 module.exports = {
