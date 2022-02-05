@@ -10,7 +10,7 @@ function init() {
   newManager()
     .then(newEmployee)
     .then(() => {
-      console.log(team);
+      // console.log(team);
     });
 }
 // Function call to initialize app
