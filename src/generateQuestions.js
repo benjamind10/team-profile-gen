@@ -46,10 +46,28 @@ const newManager = () => {
     const manager = new Manager(name, id, email, officeNumber);
 
     team.push(manager);
-    console.log(team);
+
+    console.log(`
+    **************************
+      Added Manager:
+        Name: ${name}
+        Email: ${email}
+        ID: ${id}
+        Office Number: ${officeNumber}
+    **************************  
+    `);
   });
+};
+
+const newEmployee = () => {
+  console.log(`
+  ***********************
+    Adding new employee:
+  ***********************
+  `);
 };
 
 module.exports = {
   newManager,
+  newEmployee,
 };

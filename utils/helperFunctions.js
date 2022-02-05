@@ -1,3 +1,4 @@
+// Helper function
 function validate(arg) {
   if (arg) return true;
   else {
