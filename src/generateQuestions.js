@@ -43,27 +43,23 @@ const newManager = () => {
     },
   ]).then(managerData => {
     const { name, id, email, officeNumber } = managerData;
-    const manager = new Manager(name, id, email, officeNumber);
+    manager = new Manager(name, id, email, officeNumber);
 
     team.push(manager);
 
     console.log(`
-    **************************
-      Added Manager:
-        Name: ${name}
-        Email: ${email}
-        ID: ${id}
-        Office Number: ${officeNumber}
-    **************************  
+    ***************************
+      Manager: ${name} added.
+    ***************************  
     `);
   });
 };
 
 const newEmployee = () => {
   console.log(`
-  ***********************
+  ************************
     Adding new employee:
-  ***********************
+  ************************
   `);
 
   return inquirer
@@ -114,19 +110,25 @@ const newEmployee = () => {
       },
     ])
     .then(response => {
-      const { name } = response;
+      const { name, id, email, role, github, school, addEmployee } =
+        response;
+
+      role === 'Engineer'
+        ? (employee = new Engineer(name, id, email, github))
+        : (employee = new Intern(name, id, email, school));
+      team.push(employee);
 
       console.log(`
     ****************************
       Employee: ${name} added.
     ****************************
     `);
-
-      console.log(response);
+      addEmployee ? newEmployee(team) : team;
     });
 };
 
 module.exports = {
   newManager,
   newEmployee,
+  team,
 };
