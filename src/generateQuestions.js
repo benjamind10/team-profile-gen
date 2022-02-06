@@ -6,12 +6,12 @@ const {
   validateEmail,
   writeFile,
 } = require('../utils/helperFunctions');
+const generateHTML = require('./generatePage');
 
 // Classes imports
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
-const generateHTML = require('./generatePage');
 
 // Global Variables
 const team = [];

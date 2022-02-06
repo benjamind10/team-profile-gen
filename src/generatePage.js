@@ -1,8 +1,11 @@
-const {renderEmployeeInfo, renderIcon} = require('../utils/helperFunctions')
+const {
+  renderEmployeeInfo,
+  renderIcon,
+} = require('../utils/helperFunctions');
 
 function generateHTML(data) {
   const cardsArr = [];
-  console.log(data);
+
   for (let i = 0; i < data.length; i++) {
     const employee = data[i];
     const role = employee.getRole();
@@ -36,8 +39,8 @@ function createCard(employee, role) {
   )}></i></span></h4>
             </div>
             <div class="card-body">
-                <p class="id">ID: ${id}</p>
-                <p class="email">Email: <a href="mailto:${
+                <p class="text-center" id="id">ID: ${id}</p>
+                <p class="text-center" id="email">Email: <a href="mailto:${
                   data.email
                 }">${data.email}</a></p>
                 ${renderEmployeeInfo(employee, role)}
@@ -47,7 +50,6 @@ function createCard(employee, role) {
     </div>
     `;
 }
-
 
 function generatePage(cards) {
   return `

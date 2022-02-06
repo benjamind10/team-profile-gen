@@ -19,9 +19,8 @@ function validateNum(arg) {
 
 function validateEmail(email) {
   valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-  if (valid) {
-    return true;
-  } else {
+  if (valid) return true;
+  else {
     console.log('Please enter an email.');
     return false;
   }
@@ -44,10 +43,11 @@ function renderIcon(role) {
 function renderEmployeeInfo(employee, role) {
   const { officeNumber, github, school } = employee;
   if (role === 'Manager')
-    return `<p class="office">Office Number: ${officeNumber}</p>`;
+    return `<p class="text-center id="office">Office Number: ${officeNumber}</p>`;
   else if (role === 'Engineer')
-    return `<p class="office">GitHub Username: ${github}</p>`;
-  else return `<p class="office">GitHub School: ${school}</p>`;
+    return `<p class="text-center id="office">GitHub Username: ${github}</p>`;
+  else
+    return `<p class="text-center id="office">GitHub School: ${school}</p>`;
 }
 
 module.exports = {
