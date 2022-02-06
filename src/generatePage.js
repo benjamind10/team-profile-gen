@@ -3,31 +3,25 @@ const {
   renderIcon,
 } = require('../utils/helperFunctions');
 
-function generateHTML(data) {
-  const cardsArr = [];
+function generateHTML(employees) {
+  const cardsArr = employees
+    .map(employee => {
+      const role = employee.getRole();
 
-  for (let i = 0; i < data.length; i++) {
-    const employee = data[i];
-    const role = employee.getRole();
+      if (role === 'Manager') return createCard(employee, 'Manager');
+      else if (role === 'Engineer')
+        return createCard(employee, 'Engineer');
+      else return createCard(employee, 'Intern');
+    })
+    .join('');
 
-    if (role === 'Manager') {
-      const managerCard = createCard(employee, 'Manager');
-      cardsArr.push(managerCard);
-    } else if (role === 'Engineer') {
-      const engineerCard = createCard(employee, 'Engineer');
-      cardsArr.push(engineerCard);
-    } else {
-      const internCard = createCard(employee, 'Intern');
-      cardsArr.push(internCard);
-    }
-  }
-  const finalCards = cardsArr.join('');
-  const finalPage = generatePage(finalCards);
+  const finalPage = generatePage(cardsArr);
   return finalPage;
 }
 
 function createCard(employee, role) {
   const { name, id, ...data } = employee;
+  console.log(employee);
 
   return `
     <div class="col-4 mt-4">
@@ -38,7 +32,7 @@ function createCard(employee, role) {
     role
   )}></i></span></h4>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-secondary">
                 <p class="text-center" id="id">ID: ${id}</p>
                 <p class="text-center" id="email">Email: <a href="mailto:${
                   data.email
