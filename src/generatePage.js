@@ -8,10 +8,17 @@ function generateHTML(employees) {
     .map(employee => {
       const role = employee.getRole();
 
-      if (role === 'Manager') return createCard(employee, 'Manager');
-      else if (role === 'Engineer')
-        return createCard(employee, 'Engineer');
-      else return createCard(employee, 'Intern');
+      switch (role) {
+        case 'Manager':
+          employee.setRole('Manager');
+          return createCard(employee);
+        case 'Engineer':
+          employee.setRole('Engineer');
+          return createCard(employee);
+        default:
+          employee.setRole('Inter');
+          return createCard(employee);
+      }
     })
     .join('');
 
@@ -19,25 +26,26 @@ function generateHTML(employees) {
   return finalPage;
 }
 
-function createCard(employee, role) {
+function createCard(employee) {
   const { name, id, ...data } = employee;
-  console.log(employee);
 
   return `
     <div class="col-4 mt-4">
         <div class="card h-100">
             <div class="card-header bg-dark text-white">
                 <h3 class="text-center">${name}</h3>
-                <h4 class="text-center">${role} <span><i id="icon" ${renderIcon(
-    role
+                <h4 class="text-center">${
+                  data.role
+                } <span><i id="icon" ${renderIcon(
+    employee.role
   )}></i></span></h4>
             </div>
-            <div class="card-body bg-secondary">
+            <div class="card-body bg-light">
                 <p class="text-center" id="id">ID: ${id}</p>
                 <p class="text-center" id="email">Email: <a href="mailto:${
                   data.email
                 }">${data.email}</a></p>
-                ${renderEmployeeInfo(employee, role)}
+                ${renderEmployeeInfo(employee)}
             </div>
 
         </div>

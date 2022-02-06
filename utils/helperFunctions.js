@@ -40,11 +40,11 @@ function renderIcon(role) {
   else return `class="fas fa-user-graduate"`;
 }
 
-function renderEmployeeInfo(employee, role) {
+function renderEmployeeInfo(employee) {
   const { officeNumber, github, school } = employee;
-  if (role === 'Manager')
+  if (employee.role === 'Manager')
     return `<p class="text-center id="office">Office Number: ${officeNumber}</p>`;
-  else if (role === 'Engineer')
+  else if (employee.role === 'Engineer')
     return `<p class="text-center id="office">GitHub Username: ${github}</p>`;
   else
     return `<p class="text-center id="office">GitHub School: ${school}</p>`;
