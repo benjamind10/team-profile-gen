@@ -38,7 +38,7 @@ function createCard(employee) {
             </div>
             <div class="card-body bg-secondary">
                 <ul class="list-group list-group-flush rounded">
-                    <li class="text-center list-group-item" id="id">ID: ${id}</p>
+                    <li class="text-center list-group-item" id="id">ID: ${employee.getId()}</p>
                     <li class="text-center list-group-item" id="email">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></p>
                     ${renderEmployeeInfo(employee)}
             </div>
