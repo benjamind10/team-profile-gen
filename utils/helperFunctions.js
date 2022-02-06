@@ -35,9 +35,26 @@ function writeFile(data) {
   });
 }
 
+function renderIcon(role) {
+  if (role === 'Manager') return `class="fas fa-mug-hot"`;
+  else if (role === 'Engineer') return `class="fas fa-glasses"`;
+  else return `class="fas fa-user-graduate"`;
+}
+
+function renderEmployeeInfo(employee, role) {
+  const { officeNumber, github, school } = employee;
+  if (role === 'Manager')
+    return `<p class="office">Office Number: ${officeNumber}</p>`;
+  else if (role === 'Engineer')
+    return `<p class="office">GitHub Username: ${github}</p>`;
+  else return `<p class="office">GitHub School: ${school}</p>`;
+}
+
 module.exports = {
   validate,
   validateNum,
   validateEmail,
   writeFile,
+  renderIcon,
+  renderEmployeeInfo,
 };

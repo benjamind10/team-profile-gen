@@ -1,88 +1,53 @@
-// Creates the manager card
-function createManager(manager) {
-  const { name, id, ...data } = manager;
-
-  return `
-    <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header bg-dark text-white">
-                <h3 class="text-center">${name}</h3>
-                <h4 class="text-center">${data.role} <span><i id="icon" class="fas fa-mug-hot"></i></span></h4>
-            </div>
-            <div class="card-body">
-                <p class="id">ID: ${id}</p>
-                <p class="email">Email: <a href="mailto:${data.email}">${data.email}</a></p>
-                <p class="office">Office Number: ${data.officeNumber}</p>
-            </div>
-
-        </div>
-    </div>
-    `;
-}
-
-function createEngineer(employee) {
-  const { name, id, ...data } = employee;
-  return `
-    <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header bg-dark text-white">
-                <h3 class="text-center">${name}</h3>
-                <h4 class="text-center">${data.role} <span><i id="icon" class="fas fa-mug-hot"></i></span></h4>
-            </div>
-            <div class="card-body">
-                <p class="id">ID: ${id}</p>
-                <p class="email">Email: <a href="mailto:${data.email}">${data.email}</a></p>
-                <p class="office">GitHub Username: ${data.github}</p>
-            </div>
-
-        </div>
-    </div>
-    `;
-}
-
-function createIntern(employee) {
-  const { name, id, ...data } = employee;
-  return `
-    <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header bg-dark text-white">
-                <h3 class="text-center">${name}</h3>
-                <h4 class="text-center">${data.role} <span><i id="icon" class="fas fa-mug-hot"></i></span></h4>
-            </div>
-            <div class="card-body">
-                <p class="id">ID: ${id}</p>
-                <p class="email">Email: <a href="mailto:${data.email}">${data.email}</a></p>
-                <p class="office">GitHub School: ${data.school}</p>
-            </div>
-
-        </div>
-    </div>
-    `;
-}
+const {renderEmployeeInfo, renderIcon} = require('../utils/helperFunctions')
 
 function generateHTML(data) {
   const cardsArr = [];
-
+  console.log(data);
   for (let i = 0; i < data.length; i++) {
     const employee = data[i];
     const role = employee.getRole();
 
     if (role === 'Manager') {
-      const managerCard = createManager(employee);
+      const managerCard = createCard(employee, 'Manager');
       cardsArr.push(managerCard);
     } else if (role === 'Engineer') {
-      const engineerCard = createEngineer(employee);
+      const engineerCard = createCard(employee, 'Engineer');
       cardsArr.push(engineerCard);
     } else {
-      const internCard = createIntern(employee);
+      const internCard = createCard(employee, 'Intern');
       cardsArr.push(internCard);
     }
   }
   const finalCards = cardsArr.join('');
-  console.log(finalCards);
   const finalPage = generatePage(finalCards);
   return finalPage;
 }
+
+function createCard(employee, role) {
+  const { name, id, ...data } = employee;
+
+  return `
+    <div class="col-4 mt-4">
+        <div class="card h-100">
+            <div class="card-header bg-dark text-white">
+                <h3 class="text-center">${name}</h3>
+                <h4 class="text-center">${role} <span><i id="icon" ${renderIcon(
+    role
+  )}></i></span></h4>
+            </div>
+            <div class="card-body">
+                <p class="id">ID: ${id}</p>
+                <p class="email">Email: <a href="mailto:${
+                  data.email
+                }">${data.email}</a></p>
+                ${renderEmployeeInfo(employee, role)}
+            </div>
+
+        </div>
+    </div>
+    `;
+}
+
 
 function generatePage(cards) {
   return `

@@ -4,12 +4,14 @@ const {
   validate,
   validateNum,
   validateEmail,
+  writeFile,
 } = require('../utils/helperFunctions');
 
 // Classes imports
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
+const generateHTML = require('./generatePage');
 
 // Global Variables
 const team = [];
@@ -123,7 +125,8 @@ const newEmployee = () => {
       Employee: ${name} added.
     ****************************
     `);
-      addEmployee ? newEmployee(team) : team;
+
+      addEmployee ? newEmployee(team) : writeFile(generateHTML(team));
     });
 };
 
