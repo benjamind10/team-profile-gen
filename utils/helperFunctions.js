@@ -41,13 +41,12 @@ function renderIcon(role) {
 }
 
 function renderEmployeeInfo(employee) {
-  const { officeNumber, github, school, role } = employee;
-  if (role === 'Manager')
-    return `<li class="text-center list-group-item" id="office">Office Number: ${officeNumber}</p>`;
-  else if (role === 'Engineer')
-    return `<li class="text-center list-group-item" id="office">GitHub Username: ${github}</p>`;
+  if (employee.getRole() === 'Manager')
+    return `<li class="text-center list-group-item" id="office">Office Number: ${employee.getOfficeNumber()}</p>`;
+  else if (employee.getRole() === 'Engineer')
+    return `<li class="text-center list-group-item" id="office">GitHub Username: ${employee.getGithub()}</p>`;
   else
-    return `<li class="text-center list-group-item" id="office">GitHub School: ${school}</p>`;
+    return `<li class="text-center list-group-item" id="office">GitHub School: ${employee.getSchool()}</p>`;
 }
 
 module.exports = {
