@@ -16,7 +16,7 @@ function generateHTML(employees) {
           employee.setRole('Engineer');
           return createCard(employee);
         default:
-          employee.setRole('Inter');
+          employee.setRole('Intern');
           return createCard(employee);
       }
     })
@@ -27,25 +27,24 @@ function generateHTML(employees) {
 }
 
 function createCard(employee) {
-  const { name, id, ...data } = employee;
+  const { name, id, role, ...data } = employee;
 
   return `
     <div class="col-4 mt-4">
         <div class="card h-100">
             <div class="card-header bg-dark text-white">
                 <h3 class="text-center">${name}</h3>
-                <h4 class="text-center">${
-                  data.role
-                } <span><i id="icon" ${renderIcon(
-    employee.role
+                <h4 class="text-center">${role} <span><i id="icon" ${renderIcon(
+    role
   )}></i></span></h4>
             </div>
-            <div class="card-body bg-light">
-                <p class="text-center" id="id">ID: ${id}</p>
-                <p class="text-center" id="email">Email: <a href="mailto:${
-                  data.email
-                }">${data.email}</a></p>
-                ${renderEmployeeInfo(employee)}
+            <div class="card-body bg-secondary">
+                <ul class="list-group list-group-flush rounded">
+                    <li class="text-center list-group-item" id="id">ID: ${id}</p>
+                    <li class="text-center list-group-item" id="email">Email: <a href="mailto:${
+                      data.email
+                    }">${data.email}</a></p>
+                    ${renderEmployeeInfo(employee)}
             </div>
 
         </div>

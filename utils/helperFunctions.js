@@ -41,13 +41,13 @@ function renderIcon(role) {
 }
 
 function renderEmployeeInfo(employee) {
-  const { officeNumber, github, school } = employee;
-  if (employee.role === 'Manager')
-    return `<p class="text-center id="office">Office Number: ${officeNumber}</p>`;
-  else if (employee.role === 'Engineer')
-    return `<p class="text-center id="office">GitHub Username: ${github}</p>`;
+  const { officeNumber, github, school, role } = employee;
+  if (role === 'Manager')
+    return `<li class="text-center list-group-item" id="office">Office Number: ${officeNumber}</p>`;
+  else if (role === 'Engineer')
+    return `<li class="text-center list-group-item" id="office">GitHub Username: ${github}</p>`;
   else
-    return `<p class="text-center id="office">GitHub School: ${school}</p>`;
+    return `<li class="text-center list-group-item" id="office">GitHub School: ${school}</p>`;
 }
 
 module.exports = {
