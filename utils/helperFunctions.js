@@ -1,3 +1,6 @@
+// Import dependencies
+const fs = require('fs');
+
 // Helper function
 function validate(arg) {
   if (arg) return true;
@@ -25,7 +28,7 @@ function validateEmail(email) {
 }
 
 function writeFile(data) {
-  fs.writeFile('../dist/index.html', data, error => {
+  fs.writeFile('./dist/index.html', data, error => {
     error
       ? console.log(error)
       : console.log('Your HTML file has been succesfully generated.');

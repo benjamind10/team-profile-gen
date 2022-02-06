@@ -43,7 +43,7 @@ const newManager = () => {
     },
   ]).then(managerData => {
     const { name, id, email, officeNumber } = managerData;
-    manager = new Manager(name, id, email, officeNumber);
+    manager = new Manager(name, id, email, officeNumber, 'Manager');
 
     team.push(manager);
 

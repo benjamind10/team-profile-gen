@@ -4,13 +4,18 @@ const {
   newEmployee,
   team,
 } = require('./src/generateQuestions');
+const { writeFile } = require('./utils/helperFunctions');
+const createCard = require('./src/generatePage');
 
 // Function to initialize app
 function init() {
   newManager()
-    .then(newEmployee)
-    .then(() => {
-      // console.log(team);
+    .then(response => {
+      console.log(team);
+      return createCard(team);
+    })
+    .then(data => {
+      writeFile(data);
     });
 }
 // Function call to initialize app
