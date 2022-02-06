@@ -24,8 +24,17 @@ function validateEmail(email) {
   }
 }
 
+function writeFile(data) {
+  fs.writeFile('../dist/index.html', data, error => {
+    error
+      ? console.log(error)
+      : console.log('Your HTML file has been succesfully generated.');
+  });
+}
+
 module.exports = {
   validate,
   validateNum,
   validateEmail,
+  writeFile,
 };
