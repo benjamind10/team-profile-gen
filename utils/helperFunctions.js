@@ -46,7 +46,7 @@ function renderEmployeeInfo(employee) {
   else if (employee.getRole() === 'Engineer')
     return `<li class="text-center list-group-item" id="office">GitHub Username: ${employee.getGithub()}</p>`;
   else
-    return `<li class="text-center list-group-item" id="office">GitHub School: ${employee.getSchool()}</p>`;
+    return `<li class="text-center list-group-item" id="office">School Name: ${employee.getSchool()}</p>`;
 }
 
 module.exports = {
