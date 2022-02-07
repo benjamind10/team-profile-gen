@@ -10,13 +10,10 @@ function generateHTML(employees) {
 
       switch (role) {
         case 'Manager':
-          employee.setRole('Manager');
           return createCard(employee);
         case 'Engineer':
-          employee.setRole('Engineer');
           return createCard(employee);
         default:
-          employee.setRole('Intern');
           return createCard(employee);
       }
     })
