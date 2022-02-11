@@ -1,13 +1,17 @@
+// Imports
 const {
   renderEmployeeInfo,
   renderIcon,
 } = require('../utils/helperFunctions');
 
+// Function that decides what card will be generated
 function generateHTML(employees) {
+  // Loops the team array
   const cardsArr = employees
     .map(employee => {
       const role = employee.getRole();
 
+      // Checks inside the loop what card to make
       switch (role) {
         case 'Manager':
           return createCard(employee);
@@ -19,10 +23,12 @@ function generateHTML(employees) {
     })
     .join('');
 
+  // Creates an array that holds the card content for eacth team member
   const finalPage = generatePage(cardsArr);
   return finalPage;
 }
 
+// Creates the card depending on what kind of employee
 function createCard(employee) {
   return `
     <div class="col-4 mt-4">
@@ -45,6 +51,7 @@ function createCard(employee) {
     `;
 }
 
+// Function that renders the HTML
 function generatePage(cards) {
   return `
     <!DOCTYPE html>

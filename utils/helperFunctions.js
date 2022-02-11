@@ -1,7 +1,7 @@
 // Import dependencies
 const fs = require('fs');
 
-// Helper function
+// Helper functions to validate the inquirer
 function validate(arg) {
   if (arg) return true;
   else {
@@ -34,6 +34,7 @@ function writeFile(data) {
   });
 }
 
+// Functions to help the cards render
 function renderIcon(role) {
   if (role === 'Manager') return `class="fas fa-mug-hot"`;
   else if (role === 'Engineer') return `class="fas fa-glasses"`;
