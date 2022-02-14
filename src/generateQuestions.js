@@ -17,6 +17,7 @@ const Intern = require('../lib/Intern');
 const team = [];
 const prompt = inquirer.prompt;
 
+// Prompts the manager questions
 const newManager = () => {
   return prompt([
     {
@@ -47,6 +48,7 @@ const newManager = () => {
     const { name, id, email, officeNumber } = managerData;
     manager = new Manager(name, id, email, officeNumber, 'Manager');
 
+    // Fills the team array with the current answers
     team.push(manager);
 
     console.log(`
@@ -57,6 +59,7 @@ const newManager = () => {
   });
 };
 
+// Prompts the employee questions Enginee/Intern
 const newEmployee = () => {
   console.log(`
   ************************
@@ -115,9 +118,12 @@ const newEmployee = () => {
       const { name, id, email, role, github, school, addEmployee } =
         response;
 
+      // Creates an employee object based on the role
       role === 'Engineer'
         ? (employee = new Engineer(name, id, email, github))
         : (employee = new Intern(name, id, email, school));
+
+      // Updates the team array to include the employee just added
       team.push(employee);
 
       console.log(`
@@ -126,6 +132,7 @@ const newEmployee = () => {
     ****************************
     `);
 
+      // Checks to see if a new employee will be added
       addEmployee ? newEmployee(team) : writeFile(generateHTML(team));
     });
 };

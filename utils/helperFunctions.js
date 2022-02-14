@@ -1,7 +1,7 @@
 // Import dependencies
 const fs = require('fs');
 
-// Helper function
+// Helper functions to validate the inquirer
 function validate(arg) {
   if (arg) return true;
   else {
@@ -34,6 +34,7 @@ function writeFile(data) {
   });
 }
 
+// Functions to help the cards render
 function renderIcon(role) {
   if (role === 'Manager') return `class="fas fa-mug-hot"`;
   else if (role === 'Engineer') return `class="fas fa-glasses"`;
@@ -44,7 +45,7 @@ function renderEmployeeInfo(employee) {
   if (employee.getRole() === 'Manager')
     return `<li class="text-center list-group-item" id="office">Office Number: ${employee.getOfficeNumber()}</p>`;
   else if (employee.getRole() === 'Engineer')
-    return `<li class="text-center list-group-item" id="office">GitHub Username: ${employee.getGithub()}</p>`;
+    return `<li class="text-center list-group-item" id="office">GitHub Username: <a href="http://github.com/${employee.getGithub()}">${employee.getGithub()}</p></a>`;
   else
     return `<li class="text-center list-group-item" id="office">School Name: ${employee.getSchool()}</p>`;
 }
