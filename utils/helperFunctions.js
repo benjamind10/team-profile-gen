@@ -45,7 +45,7 @@ function renderEmployeeInfo(employee) {
   if (employee.getRole() === 'Manager')
     return `<li class="text-center list-group-item" id="office">Office Number: ${employee.getOfficeNumber()}</p>`;
   else if (employee.getRole() === 'Engineer')
-    return `<li class="text-center list-group-item" id="office">GitHub Username: ${employee.getGithub()}</p>`;
+    return `<li class="text-center list-group-item" id="office">GitHub Username: <a href="http://github.com/${employee.getGithub()}">${employee.getGithub()}</p></a>`;
   else
     return `<li class="text-center list-group-item" id="office">School Name: ${employee.getSchool()}</p>`;
 }
